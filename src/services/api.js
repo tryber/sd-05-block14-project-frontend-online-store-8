@@ -1,8 +1,7 @@
 export function getCategories() {
   // implement here
   const url = 'https://api.mercadolibre.com/sites/MLB/categories';
-  
-  return fetch(proxyurl + url)
+  return fetch(url)
   .then((response) => response.json())
   .then((data) => console.log(data));
 }
