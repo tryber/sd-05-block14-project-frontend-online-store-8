@@ -7,17 +7,16 @@
   pointer-events: none;
 }
 
-.search{
-  border: 1px solid #000;
+.search {
+  border: 1px solid black;
   border-radius: 20px;
   height: 30px;
   margin-top: 20px;
-  outline: none;
   padding-left: 15px;
   width: 80%;
 }
 
 .search-text {
-  color: rgb(75, 75, 75);
-  font-weight: bold;
+  color: rgb( 75, 75, 75 );
+  font-weight: 700;
 }
