@@ -1,11 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
+import ListItem from './ItemList';
+import { Switch, Route } from 'react-router';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      
+      <Switch>
+        <Route exact path='/'>
+          <ListItem />
+        </Route>
+      </Switch>
     </div>
   );
 }
