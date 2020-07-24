@@ -13,7 +13,7 @@ class ProductInfo extends React.Component {
       <li>
         {title}: {value}
       </li>
-    )
+    );
   }
 }
 
