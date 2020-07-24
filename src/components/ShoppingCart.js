@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductInfo from './ProductInfo';
+import EmptyCart from './EmptyCart';
 
 class ShoppingCart extends React.Component {
   constructor(props) {
@@ -10,16 +11,8 @@ class ShoppingCart extends React.Component {
     };
   }
 
-  emptyCart() {
-    return (
-      <div data-testid="shopping-cart-empty-message">
-        Seu carrinho está vazio
-      </div>
-    );
-  }
-
   render() {
-    if (this.state.emptyCart) return this.emptyCart();
+    if (this.state.emptyCart) return <EmptyCart />;
     // Carrinho recebe como props um array com a lista de produtos que deve renderizar
     const arrayProducts = this.props.productsList;
     return (
