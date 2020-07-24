@@ -6,7 +6,7 @@ class ShoppingCart extends React.Component {
     super(props);
     this.state = {
       productList: [],
-      emptyCart: true;
+      emptyCart: true,
     };
   }
 
