@@ -19,7 +19,7 @@ class ShoppingCart extends React.Component {
   }
 
   render() {
-    if (this.state.emptyCart) {this.emptyCart()};
+    if (this.state.emptyCart) return this.emptyCart();
     // Carrinho recebe como props um array com a lista de produtos que deve renderizar
     const arrayProducts = this.props.productsList;
     return (
