@@ -1,7 +1,7 @@
 export function getCategories() {
   // implement here
   const url = 'https://api.mercadolibre.com/sites/MLB/categories';
-  const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+  
   return fetch(proxyurl + url)
   .then((response) => response.json())
   .then((data) => console.log(data));
