@@ -1,5 +1,5 @@
 import React from 'react';
-import * from '../services/api';
+// import * as productsAPI from '../services/api';
 
 class ProductDetails extends React.Component {
   constructor(props) {
