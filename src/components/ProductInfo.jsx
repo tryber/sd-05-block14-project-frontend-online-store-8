@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ProductCard extends React.Component {
+class ProductInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -9,14 +9,14 @@ class ProductCard extends React.Component {
   }
 
   render() {
-    //Deve desestruturar as informações do produto para montar o card
+    //Deve desestruturar as informações do produto para montar a informação
     const { title, value} = this.props.product;
     return(
-      <div>
-        
-      </div>
+      <li>
+
+      </li>
     )
   }
 }
 
-export default ProductCard;
+export default ProductInfo;

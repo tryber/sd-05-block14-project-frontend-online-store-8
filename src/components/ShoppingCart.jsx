@@ -15,7 +15,9 @@ class ShoppingCart extends React.Component {
       <div>
         <h2>Carrinho de Compras</h2>
         <div className="productsList">
-          {arrayProducts.map((product) => <ProductCard product={product} />)}
+          <ul>
+            {arrayProducts.map((product) => <ProductInfo product={product} />)}
+          </ul>
         </div>
       </div>
     )
