@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Carrinho extends React.Component {
+class ShoppingCart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,16 +10,16 @@ class Carrinho extends React.Component {
 
   render() {
     //Carrinho recebe como props um array com a lista de produtos que deve renderizar
-    const arrayProdutos = this.props.productsList;
+    const arrayProducts = this.props.productsList;
     return(
       <div>
         <h2>Carrinho de Compras</h2>
         <div className="productsList">
-          
+          {arrayProdutos.map((product))}
         </div>
       </div>
     )
   }
 }
 
-export default Carrinho;
+export default ShoppingCart;
