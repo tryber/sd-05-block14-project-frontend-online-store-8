@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-class ItemList extends React.Component {
+class ListItem extends React.Component {
   render() {
     return (
       <div>
@@ -8,9 +9,10 @@ class ItemList extends React.Component {
         <p className="search-text" data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
+        <Link to="/carrinho">Carrinho</Link>
       </div>
     );
   }
 }
 
-export default ItemList;
+export default ListItem;
