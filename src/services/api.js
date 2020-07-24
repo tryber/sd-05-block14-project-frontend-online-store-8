@@ -1,11 +1,13 @@
-export async function getCategories() {
+export function getCategories() {
   // implement here
   const url = 'https://api.mercadolibre.com/sites/MLB/categories';
-  return fetch(url)
-  .then((response) => response.json());
+  const proxyurl = "https://cors-anywhere.herokuapp.com/";
+  return fetch(proxyurl + url)
+  .then((response) => response.json())
+  .then((data) => console.log(data));
 }
 
-export async function getProductsFromCategoryAndQuery(categoryId, query) {
+export function getProductsFromCategoryAndQuery(categoryId, query) {
   // implement here
   if (categoryId) {
     return fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}`)
