@@ -1,11 +1,16 @@
+import { Switch, Route } from 'react-router';
 import React from 'react';
+import ListItem from './components/ItemList';
 import './App.css';
-import ShoppingCart from './components/ShoppingCart';
 
 function App() {
   return (
     <div className="App">
-      <ShoppingCart />
+      <Switch>
+        <Route exact path="/">
+          <ListItem />
+        </Route>
+      </Switch>
     </div>
   );
 }
