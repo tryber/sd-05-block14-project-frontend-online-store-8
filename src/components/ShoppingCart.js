@@ -16,13 +16,13 @@ class ShoppingCart extends React.Component {
   }
 
   componentDidUpdate() {
-    if(this.props.productsList.length > 1) {
+    if (this.props.productsList.length > 1) {
       this.changeState('emptyCart', false);
     }
   }
 
   changeState(param, value) {
-    this.setState({[param]: value});
+    this.setState({ [param]: value });
   }
 
   render() {

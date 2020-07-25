@@ -11,7 +11,7 @@ class ListItem extends React.Component {
       query: '',
       categoryId: '',
       productsList: [],
-    }
+    };
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -24,19 +24,19 @@ class ListItem extends React.Component {
   loadProductsList() {
     const { query, categoryId } = this.state;
     const promiseAPI = productsAPI.getProductsFromCategoryAndQuery(categoryId, query);
-    if(promiseAPI) {
+    if (promiseAPI) {
       promiseAPI.then((data) => {
-        const productsList = data.results.map(product => {
+        const productsList = data.results.map((product) => {
           const productInformation = {
             id: product.id,
             title: product.title,
             price: product.price,
-          }
+          };
           return productInformation;
         });
-        this.setState({productsList});
+        this.setState({ productsList });
       });
-    } 
+    }
   }
 
   render() {
@@ -48,7 +48,7 @@ class ListItem extends React.Component {
         </p>
         <Link to="/carrinho" arrayProducts={this.state.itensCarrinho}>Carrinho</Link>
         <div className="productsList">
-          {this.state.productsList.map(item => <ProductCard product={item} />)}
+          {this.state.productsList.map((item) => <ProductCard product={item} />)}
         </div>
       </div>
     );
