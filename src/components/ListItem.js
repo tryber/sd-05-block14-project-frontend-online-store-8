@@ -31,6 +31,7 @@ class ListItem extends React.Component {
             id: product.id,
             title: product.title,
             price: product.price,
+            imageSource: product.thumbnail,
           };
           return productInformation;
         });
