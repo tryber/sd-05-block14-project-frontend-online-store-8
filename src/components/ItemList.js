@@ -70,7 +70,7 @@ class ListItem extends React.Component {
               <img src={category.thumbnail} alt={category.title} />
               <span >R$ {category.price}</span>
             </div>
-          )}
+          )};
         </div>
       </div>
     );
