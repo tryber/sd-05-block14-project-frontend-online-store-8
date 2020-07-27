@@ -15,18 +15,12 @@ class ListItem extends React.Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
 
-  button(id, name) {
-    return (
-      <button
-        type="button"
-        value={id}
-        onClick={this.handleClickCategory}>{name}
-      </button>
-    )
-  }
-
   async componentDidMount() {
     this.searchGetCategories();
+  }
+
+  button(id, name) {
+    return <button type="button" value={id} onClick={this.handleClickCategory}>{name}</button>;
   }
 
   async searchGetCategories() {
@@ -66,29 +60,24 @@ class ListItem extends React.Component {
         </p>
         <ul>
           {search.map((category) => {
-              return(
-                <li key={category.title}>
-                  {this.button(category.id, category.name)}
-                </li>
-              )
+              return <li key={category.title}>{this.button(category.id, category.name)}</li>
             })
           }
         </ul>
         <div>
-          {result.map((category) =>{
-            return (
-              <div key={category.title}>
-                <span >{category.title}</span>
-                <img src={category.thumbnail} alt={category.title} />
-                <span >R$ {category.price}</span>
-              </div>
-            )
-          }
-          )};
+          {result.map((category) => {
+          return (
+            <div key={category.title}>
+              <span >{category.title}</span>
+              <img src={category.thumbnail} alt={category.title} />
+              <span >R$ {category.price}</span>
+            </div>
+          )
+          })};
         </div>
       </div>
     );
-  }
+  };
 }
 
 export default ListItem;
