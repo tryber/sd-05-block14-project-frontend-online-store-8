@@ -43,7 +43,7 @@ class ListItem extends React.Component {
   render(){
     const {search, result} = this.state;
     return (
-      <>
+      <div>
         <input type="text" onChange={this.handleChange}/><button type="button" onClick={this.handleSearch}>Buscar</button>
         <p data-testid="home-initial-message">Digite algum termo de pesquisa ou escolha uma categoria.</p>
         <ul>
@@ -62,7 +62,7 @@ class ListItem extends React.Component {
             </div>            
           )}
         </div>
-      </>
+      </div>
     )
   }
 
