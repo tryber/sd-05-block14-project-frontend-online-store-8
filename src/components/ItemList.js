@@ -40,9 +40,9 @@ class ListItem extends React.Component {
   async handleSearch() {
     const resultado = await
       API.getProductsFromCategoryAndQuery(this.state.categoria, this.state.value);
-    this.setState({
-      result: resultado.results,
-    });
+    this.setState(
+      {result: resultado.results},
+    );
   }
 
   render() {
@@ -60,10 +60,10 @@ class ListItem extends React.Component {
               <button
                 type="button"
                 value={category.id}
-                onClick={this.handleClickCategory}>{category.name}
+                onClick={this.handleClickCategory}>
+                {category.name}
               </button>
-            </li>)
-          }
+            </li>)}
         </ul>
         <div>
           {result.map((category) =>
