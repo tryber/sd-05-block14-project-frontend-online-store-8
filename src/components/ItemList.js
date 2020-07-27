@@ -59,25 +59,25 @@ class ListItem extends React.Component {
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
         <ul>
-          {search.map((category) => {
-              return <li key={category.title}>{this.button(category.id, category.name)}</li>
-            })
-          }
+        {search.map((category) => {
+          return <li key={category.title}>{this.button(category.id, category.name)}</li>;
+        })
+        }
         </ul>
         <div>
           {result.map((category) => {
-          return (
-            <div key={category.title}>
-              <span >{category.title}</span>
-              <img src={category.thumbnail} alt={category.title} />
-              <span >R$ {category.price}</span>
-            </div>
-          )
+            return (
+              <div key={category.title}>
+                <span >{category.title}</span>
+                <img src={category.thumbnail} alt={category.title} />
+                <span >R$ {category.price}</span>
+              </div>
+            );
           })};
         </div>
       </div>
     );
-  };
+  }
 }
 
 export default ListItem;
