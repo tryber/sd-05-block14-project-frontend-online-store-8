@@ -1,7 +1,7 @@
 import React from 'react';
 import * as API from '../services/api';
 
-class ListItem extends React.Component {
+class ItemList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -65,11 +65,11 @@ class ListItem extends React.Component {
           }
         </ul>
         <div>
-          {result.map((category) => (
-            <div key={category.title}>
-              <span >{category.title}</span>
-              <img src={category.thumbnail} alt={category.title} />
-              <span >R$ {category.price}</span>
+          {result.map((product) => (
+            <div key={product.title}>
+              <span >{product.title}</span>
+              <img src={product.thumbnail} alt={product.title} />
+              <span >R$ {product.price}</span>
             </div>
           ))}
         </div>
@@ -78,4 +78,4 @@ class ListItem extends React.Component {
   }
 }
 
-export default ListItem;
+export default ItemList;
