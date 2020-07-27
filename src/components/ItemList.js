@@ -21,7 +21,7 @@ class ListItem extends React.Component {
 
   async searchGetCategories() {
     this.setState(
-      { search: await API.getCategories(), },
+      { search: await API.getCategories() },
     );
   }
 
@@ -69,13 +69,13 @@ class ListItem extends React.Component {
           {result.map((category) =>
             <div key={category.title}>
               <span >{category.title}</span>
-              <img src={category.thumbnail} />
+              <img src={category.thumbnail} alt={category.title} />
               <span >R$ {category.price}</span>
             </div>
           )}
         </div>
       </div>
-    )
+    );
   }
 }
 
