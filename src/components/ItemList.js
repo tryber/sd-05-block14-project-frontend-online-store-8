@@ -60,8 +60,7 @@ class ListItem extends React.Component {
               <button
                 type="button"
                 value={category.id}
-                onClick={this.handleClickCategory}>
-                {category.name}
+                onClick={this.handleClickCategory}>{category.name}
               </button>
             </li>)
           }
@@ -69,18 +68,15 @@ class ListItem extends React.Component {
         <div>
           {result.map((category, index) =>
             <div key={index}>
-            <span >{category.title}</span>
-            <img src= {category.thumbnail} />
-            <span >R$ {category.price}</span>
+              <span >{category.title}</span>
+              <img src= {category.thumbnail} />
+              <span >R$ {category.price}</span>
             </div>     
           )}
         </div>
       </div>
     )
   }
-
-  
-
 }
 
 export default ListItem;
