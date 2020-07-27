@@ -21,28 +21,28 @@ class ListItem extends React.Component {
 
   async searchGetCategories() {
     this.setState(
-      {search: await API.getCategories(),}
+      { search: await API.getCategories(), },
     );
   }
 
   handleChange(e) {
     this.setState(
-      {value: e.target.value,}
+      { value: e.target.value },
     );
   }
 
   handleClickCategory(e) {
     this.setState(
-      {categoria: e.target.value,}
+      { categoria: e.target.value },
     );
   }
 
   async handleSearch() {
     const resultado = await
       API.getProductsFromCategoryAndQuery(this.state.categoria, this.state.value);
-      this.setState({
-        result: resultado.results,
-      });
+    this.setState({
+      result: resultado.results,
+    });
   }
 
   render() {
@@ -55,8 +55,8 @@ class ListItem extends React.Component {
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
         <ul>
-          {search.map((category, index) =>
-            <li key={index}>
+          {search.map((category) =>
+            <li key={category.title}>
               <button
                 type="button"
                 value={category.id}
@@ -66,12 +66,12 @@ class ListItem extends React.Component {
           }
         </ul>
         <div>
-          {result.map((category, index) =>
-            <div key={index}>
+          {result.map((category) =>
+            <div key={category.title}>
               <span >{category.title}</span>
-              <img src= {category.thumbnail} />
+              <img src={category.thumbnail} />
               <span >R$ {category.price}</span>
-            </div>     
+            </div>
           )}
         </div>
       </div>
