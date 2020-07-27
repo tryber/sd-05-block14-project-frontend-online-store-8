@@ -66,11 +66,11 @@ class ListItem extends React.Component {
         </ul>
         <div>
           {result.map((category) => (
-          <div key={category.title}>
-            <span >{category.title}</span>
-            <img src={category.thumbnail} alt={category.title} />
-            <span >R$ {category.price}</span>
-          </div>
+            <div key={category.title}>
+              <span >{category.title}</span>
+              <img src={category.thumbnail} alt={category.title} />
+              <span >R$ {category.price}</span>
+            </div>
           ))}
         </div>
       </div>
