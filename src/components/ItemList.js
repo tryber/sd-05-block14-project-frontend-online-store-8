@@ -26,7 +26,7 @@ class ItemList extends React.Component {
 
   async searchGetCategories() {
     this.setState(
-      { search: await api.getCategories().then(categories => categories) },
+      { search: await api.getCategories().then((categories) => categories) },
     );
   }
 
@@ -45,7 +45,7 @@ class ItemList extends React.Component {
   async handleSearch() {
     const resultado = await
       api.getProductsFromCategoryAndQuery(this.state.categoria, this.state.value)
-      .then(products => products);
+      .then((products) => products);
     this.setState(
       { result: resultado.results },
     );
