@@ -17,13 +17,6 @@ class ShoppingCart extends React.Component {
     if (this.props.location.query) {
       productsList = this.props.location.query.cart;
     }
-    const saved = localStorage.getItem('save-item');
-    if (saved && productsList) {
-      productsList = [...saved, productsList];
-    }
-    if (saved && !productsList) {
-      productsList = [...saved];
-    }
     if (productsList.length > 0) {
       this.changeState(productsList);
     }
