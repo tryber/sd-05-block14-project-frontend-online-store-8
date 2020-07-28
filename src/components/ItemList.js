@@ -62,11 +62,18 @@ class ItemList extends React.Component {
     );
   }
 
-  addToCart(e) {
+  async addToCart(e) {
     const id = e.target.value;
     const result = this.state.result;
     const product = result.find((prod) => prod.id === id);
-    this.setState({ cart: [...this.state.cart, product] });
+    await this.setState({ cart: [...this.state.cart, product] });
+    const storage = localStorage.saveItem;
+    console.log(storage[0].title);
+    if (storage) {
+      localStorage.setItem('saveItem', [...storage, product]);
+    } else {
+      localStorage.setItem('saveItem', [product]);
+    }
   }
 
   async handleSearch() {
