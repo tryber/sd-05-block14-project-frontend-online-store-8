@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import * as api from '../services/api';
 import ProductCard from './ProductCard';
-import { Link } from 'react-router-dom';
 
 class ItemList extends React.Component {
   constructor(props) {
@@ -48,8 +49,8 @@ class ItemList extends React.Component {
   addToCart(e) {
     const id = e.target.value;
     const result = this.state.result;
-    const product = result.find((product) => product.id === id);
-    this.setState({ cart: [ ...this.state.cart, product ] });
+    const product = result.find((prod) => prod.id === id);
+    this.setState({ cart: [...this.state.cart, product] });
   }
 
   async handleSearch() {
@@ -67,7 +68,7 @@ class ItemList extends React.Component {
       <div>
         <input type="text" onChange={this.handleChange} />
         <button type="button" onClick={this.handleSearch}>Buscar</button>
-        <Link data-testid="shopping-cart-button" to={{pathname: `/shopping-cart`, query: { cart }}}>
+        <Link data-testid="shopping-cart-button" to={{ pathname: `/cart`, query: { cart } }}>
           <img src="./icons/carrinho.png" alt="carrinho" />
         </Link>
         <p data-testid="home-initial-message">

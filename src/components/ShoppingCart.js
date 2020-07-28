@@ -9,19 +9,24 @@ class ShoppingCart extends React.Component {
       productsList: [],
       emptyCart: true,
     };
+    this.changeState = this.changeState.bind(this);
   }
 
   componentDidMount() {
-    let productsList = undefined;
+    let productsList = [];
     if (this.props.location.query) {
       productsList = this.props.location.query.cart;
     }
-    if (productsList && productsList.length > 0){
-      this.setState({
-        productsList,
-        emptyCart: false,
-      });
+    if (productsList.length > 0) {
+      this.changeState(productsList);
     }
+  }
+
+  changeState(productsList) {
+    this.setState({
+      productsList,
+      emptyCart: false,
+    });
   }
 
   render() {

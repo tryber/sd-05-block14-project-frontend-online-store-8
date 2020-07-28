@@ -14,7 +14,7 @@ function App() {
         <Route exact path="/">
           <ItemList />
         </Route>
-        <Route exact path="/shopping-cart" render={(props) => <ShoppingCart {...props} />} />
+        <Route exact path="/cart" render={(props) => <ShoppingCart {...props} />} />
         <Route exact path="/:id" render={(props) => <ProductDetails {...props} />} />
       </Switch>
     </div>
