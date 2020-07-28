@@ -88,7 +88,9 @@ class ItemList extends React.Component {
         </p>
         <div>
           {search.map((category) => (
-            <div data-testid="category" key={category.id}>{this.button(category.id, category.name, category.title)}</div>
+            <div data-testid="category" key={category.id}>
+              {this.button(category.id, category.name, category.title)}
+            </div>
           ))
           }
         </div>
