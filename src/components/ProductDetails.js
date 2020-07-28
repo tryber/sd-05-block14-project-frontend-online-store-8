@@ -19,7 +19,11 @@ class ProductDetails extends React.Component {
             {product.title}
           </div>
         </div>
-        <Link to={{ pathname: `${cartPath}`, query: { cart: product } }}>Adicione ao carrinho</Link>
+        <Link data-testid="product-detail-add-to-cart"
+          to={{ pathname: `${cartPath}`, query: { cart: product } }}
+        >
+        Adicione ao carrinho
+        </Link>
       </div>
     );
   }
