@@ -14,7 +14,12 @@ class ProductCard extends React.Component {
         <img src={product.thumbnail} alt={product.title} />
         <span >R$ {product.price}</span>
         <button>Adicionar ao carrinho</button>
-        <Link data-testid="product-detail-link" to={{ pathname: `/${product.id}`, query: {product} }}>Ver detalhes</Link>
+        <Link
+          data-testid="product-detail-link"
+          to={{ pathname: `/${product.id}`, query: { product } }}
+        >
+          Ver detalhes
+        </Link>
       </div>
     );
   }

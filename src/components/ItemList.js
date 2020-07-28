@@ -66,7 +66,7 @@ class ItemList extends React.Component {
           }
         </ul>
         <div>
-          {result.map((product) => <ProductCard product={product} />)}          
+          {result.map((product) => <ProductCard product={product} />)}
         </div>
       </div>
     );
