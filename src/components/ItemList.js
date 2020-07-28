@@ -53,14 +53,13 @@ class ItemList extends React.Component {
     await this.setState(
       { categoria: e.target.value },
     );
-    
-      api.getProductsFromCategoryAndQuery(this.state.categoria, this.state.value)
-      .then((products) => products)
-      .then((data) =>
-        this.setState(
-          { result: data.results },
-        ),
-      );
+    api.getProductsFromCategoryAndQuery(this.state.categoria, this.state.value)
+    .then((products) => products)
+    .then((data) =>
+      this.setState(
+        { result: data.results },
+      ),
+    );
   }
 
   addToCart(e) {
