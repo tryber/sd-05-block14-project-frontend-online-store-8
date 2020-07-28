@@ -25,7 +25,16 @@ class ItemList extends React.Component {
   }
 
   button(id, name) {
-    return <button type="button" value={id} onClick={this.handleClickCategory}>{name}</button>;
+    return (
+      <button
+        data-testid="category"
+        type="button"
+        value={id}
+        onClick={this.handleClickCategory}
+      >
+        {name}
+      </button>
+    );
   }
 
   async searchGetCategories() {
@@ -40,9 +49,16 @@ class ItemList extends React.Component {
     );
   }
 
-  handleClickCategory(e) {
-    this.setState(
+  async handleClickCategory(e) {
+    await this.setState(
       { categoria: e.target.value },
+    );
+    api.getProductsFromCategoryAndQuery(this.state.categoria, this.state.value)
+    .then((products) => products)
+    .then((data) =>
+      this.setState(
+        { result: data.results },
+      ),
     );
   }
 
@@ -67,25 +83,28 @@ class ItemList extends React.Component {
     const cartPath = '/cart';
     return (
       <div>
-        <input type="text" onChange={this.handleChange} />
-        <button type="button" onClick={this.handleSearch}>Buscar</button>
+        <input data-testid="query-input" type="text" onChange={this.handleChange} />
+        <button data-testid="query-button" type="button" onClick={this.handleSearch}>Buscar</button>
         <Link
           data-testid="shopping-cart-button"
           to={{ pathname: `${cartPath}`, query: { cart } }}
         >
-          <img src="./icons/carrinho.png" alt="carrinho" />
+          <img src="../icons/carrinho.png" alt="carrinho" />
         </Link>
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
         <div>
           {search.map((category) => (
-            <div key={category.title}>{this.button(category.id, category.name)}</div>
+            <div key={category.id}>
+              {this.button(category.id, category.name, category.title)}
+            </div>
           ))
           }
         </div>
         <div>
-          {result.map((product) => <ProductCard product={product} function={this.addToCart} />)}
+          {result.map((product) => (
+            <ProductCard key={product.id} product={product} function={this.addToCart} />))}
         </div>
       </div>
     );
