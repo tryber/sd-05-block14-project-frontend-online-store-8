@@ -95,7 +95,12 @@ class ItemList extends React.Component {
           }
         </div>
         <div>
-          {result.map((product) => <ProductCard key={product.id} product={product} function={this.addToCart} />)}
+          {result.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              function={this.addToCart}
+            />))}
         </div>
       </div>
     );
