@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // import * as productsAPI from '../services/api';
+import Form from './Form';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class ProductDetails extends React.Component {
         >
         Adicione ao carrinho
         </Link>
+        <Form />
       </div>
     );
   }
