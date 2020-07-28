@@ -68,7 +68,7 @@ class ItemList extends React.Component {
       <div>
         <input type="text" onChange={this.handleChange} />
         <button type="button" onClick={this.handleSearch}>Buscar</button>
-        <Link data-testid="shopping-cart-button" to={{ pathname: `/cart`, query: { cart } }}>
+        <Link data-testid="shopping-cart-button" to={{ pathname: "/cart", query: { cart } }}>
           <img src="./icons/carrinho.png" alt="carrinho" />
         </Link>
         <p data-testid="home-initial-message">
