@@ -14,7 +14,9 @@ class ProductInfo extends React.Component {
         <span data-testid="shopping-cart-product-name">Nome:{product.title}</span>
         <span>Preço:{product.price}</span>
         <span
-          data-testid="shopping-cart-product-quantity">Qtde Disponível: {product.available_quantity}
+          data-testid="shopping-cart-product-quantity"
+        >
+          Qtde Disponível: {product.available_quantity}
         </span>
       </li>
     );

@@ -30,10 +30,11 @@ class ItemList extends React.Component {
         data-testid="category"
         type="button"
         value={id}
-        onClick={this.handleClickCategory}>
+        onClick={this.handleClickCategory}
+      >
         {name}
       </button>
-    )
+    );
   }
 
   async searchGetCategories() {
