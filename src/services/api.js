@@ -7,7 +7,7 @@ export function getCategories() {
 }
 
 export function getProductsFromCategoryAndQuery(categoryId, query) {
-  // implement here
+  // implement herereeee
   let url = '';
   if (categoryId && !query) {
     url = (`https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}`);
