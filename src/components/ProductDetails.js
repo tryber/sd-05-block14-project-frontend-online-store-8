@@ -9,7 +9,6 @@ class ProductDetails extends React.Component {
 
   render() {
     const product = this.props.location.query.product;
-    console.log(product)
     return (
       <div>
         <div data-testid="product-detail-name">

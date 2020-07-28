@@ -25,7 +25,15 @@ class ItemList extends React.Component {
   }
 
   button(id, name) {
-    return <button data-testid="category" type="button" value={id} onClick={this.handleClickCategory}>{name}</button>;
+    return (
+      <button
+        data-testid="category"
+        type="button"
+        value={id}
+        onClick={this.handleClickCategory}>
+        {name}
+      </button>
+    )
   }
 
   async searchGetCategories() {
