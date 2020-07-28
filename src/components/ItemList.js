@@ -25,7 +25,7 @@ class ItemList extends React.Component {
   }
 
   button(id, name) {
-    return <button type="button" value={id} onClick={this.handleClickCategory}>{name}</button>;
+    return <button data-testid="category" type="button" value={id} onClick={this.handleClickCategory}>{name}</button>;
   }
 
   async searchGetCategories() {
@@ -67,8 +67,8 @@ class ItemList extends React.Component {
     const cartPath = '/cart';
     return (
       <div>
-        <input type="text" onChange={this.handleChange} />
-        <button type="button" onClick={this.handleSearch}>Buscar</button>
+        <input data-testid="query-input" type="text" onChange={this.handleChange} />
+        <button data-testid="query-button" type="button" onClick={this.handleSearch}>Buscar</button>
         <Link
           data-testid="shopping-cart-button"
           to={{ pathname: `${cartPath}`, query: { cart } }}
