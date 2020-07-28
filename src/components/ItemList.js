@@ -64,12 +64,14 @@ class ItemList extends React.Component {
 
   render() {
     const { search, result, cart } = this.state;
+    const cartPath = '/cart';
     return (
       <div>
         <input type="text" onChange={this.handleChange} />
         <button type="button" onClick={this.handleSearch}>Buscar</button>
         <Link
-          data-testid="shopping-cart-button" to={{ pathname: `/cart`, query: { cart } }}
+          data-testid="shopping-cart-button"
+          to={{ pathname: `${cartPath}`, query: { cart } }}
         >
           <img src="./icons/carrinho.png" alt="carrinho" />
         </Link>
