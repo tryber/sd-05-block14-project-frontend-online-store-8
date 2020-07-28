@@ -89,7 +89,7 @@ class ItemList extends React.Component {
           data-testid="shopping-cart-button"
           to={{ pathname: `${cartPath}`, query: { cart } }}
         >
-          <img src="./icons/carrinho.png" alt="carrinho" />
+          <img src="../icons/carrinho.png" alt="carrinho" />
         </Link>
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.

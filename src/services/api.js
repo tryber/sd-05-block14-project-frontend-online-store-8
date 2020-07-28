@@ -17,7 +17,7 @@ export function getProductsFromCategoryAndQuery(categoryId, query) {
   }
 
   if (categoryId && query) {
-  url = (`https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}&q=${query}`);
+    url = (`https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}&q=${query}`);
   }
   return fetch(url).then((response) => response.json());
 }
