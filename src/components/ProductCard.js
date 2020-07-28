@@ -5,7 +5,7 @@ class ProductCard extends React.Component {
   render() {
     const product = this.props.product;
     return (
-      <div data-testid="product" key={product.title}>
+      <div data-testid="product" key={this.props.altkey}>
         <span>{product.title}</span>
         <img src={product.thumbnail} alt={product.title} />
         <span>R$ {product.price}</span>

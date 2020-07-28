@@ -27,7 +27,6 @@ class ItemList extends React.Component {
   button(id, name) {
     return (
       <button
-        data-testid="category"
         type="button"
         value={id}
         onClick={this.handleClickCategory}
@@ -89,12 +88,12 @@ class ItemList extends React.Component {
         </p>
         <div>
           {search.map((category) => (
-            <div key={category.title}>{this.button(category.id, category.name)}</div>
+            <div data-testid="category" key={category.id}>{this.button(category.id, category.name, category.title)}</div>
           ))
           }
         </div>
         <div>
-          {result.map((product) => <ProductCard product={product} function={this.addToCart} />)}
+          {result.map((product) => <ProductCard key={product.id} product={product} function={this.addToCart} />)}
         </div>
       </div>
     );
