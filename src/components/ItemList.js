@@ -1,5 +1,6 @@
 import React from 'react';
-import * as API from '../services/api';
+import * as api from '../services/api';
+import ProductCard from './ProductCard';
 
 class ItemList extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class ItemList extends React.Component {
 
   async searchGetCategories() {
     this.setState(
-      { search: await API.getCategories() },
+      { search: await api.getCategories() },
     );
   }
 
@@ -43,7 +44,7 @@ class ItemList extends React.Component {
 
   async handleSearch() {
     const resultado = await
-      API.getProductsFromCategoryAndQuery(this.state.categoria, this.state.value);
+      api.getProductsFromCategoryAndQuery(this.state.categoria, this.state.value);
     this.setState(
       { result: resultado.results },
     );
@@ -65,13 +66,7 @@ class ItemList extends React.Component {
           }
         </ul>
         <div>
-          {result.map((product) => (
-            <div key={product.title}>
-              <span >{product.title}</span>
-              <img src={product.thumbnail} alt={product.title} />
-              <span >R$ {product.price}</span>
-            </div>
-          ))}
+          {result.map((product) => <ProductCard product={product} />)}          
         </div>
       </div>
     );
