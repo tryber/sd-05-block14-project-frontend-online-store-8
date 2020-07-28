@@ -10,7 +10,7 @@ class ProductDetails extends React.Component {
 
   render() {
     const product = this.props.location.query.product;
-    const cartPath = '/cart'
+    const cartPath = '/cart';
     return (
       <div>
         <h2>Detalhes do produto</h2>
