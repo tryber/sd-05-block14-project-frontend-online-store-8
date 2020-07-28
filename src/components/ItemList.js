@@ -26,7 +26,7 @@ class ItemList extends React.Component {
 
   async searchGetCategories() {
     this.setState(
-      { search: await api.getCategories() },
+      { search: await api.getCategories().then(categories => categories) },
     );
   }
 
@@ -44,7 +44,8 @@ class ItemList extends React.Component {
 
   async handleSearch() {
     const resultado = await
-      api.getProductsFromCategoryAndQuery(this.state.categoria, this.state.value);
+      api.getProductsFromCategoryAndQuery(this.state.categoria, this.state.value)
+      .then(products => products);
     this.setState(
       { result: resultado.results },
     );
@@ -59,12 +60,12 @@ class ItemList extends React.Component {
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
-        <ul>
+        <div>
           {search.map((category) => (
-            <li key={category.title}>{this.button(category.id, category.name)}</li>
+            <div key={category.title}>{this.button(category.id, category.name)}</div>
           ))
           }
-        </ul>
+        </div>
         <div>
           {result.map((product) => <ProductCard product={product} />)}
         </div>
