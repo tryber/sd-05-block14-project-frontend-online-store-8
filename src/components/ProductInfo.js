@@ -8,10 +8,10 @@ class ProductInfo extends React.Component {
 
   render() {
     // Deve desestruturar as informações do produto para montar a informação
-    const { title, value } = this.props.product;
+    const product = this.props.product;
     return (
       <li>
-        {title}: {value}
+        Nome:{product.title}, Preço:{product.price}, Qtde Disponível: {product.available_quantity}
       </li>
     );
   }

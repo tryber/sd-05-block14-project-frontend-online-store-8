@@ -6,15 +6,33 @@ class ShoppingCart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productList: [],
+      productsList: [],
       emptyCart: true,
     };
+    this.changeState = this.changeState.bind(this);
+  }
+
+  componentDidMount() {
+    let productsList = [];
+    if (this.props.location.query) {
+      productsList = this.props.location.query.cart;
+    }
+    if (productsList.length > 0) {
+      this.changeState(productsList);
+    }
+  }
+
+  changeState(productsList) {
+    this.setState({
+      productsList,
+      emptyCart: false,
+    });
   }
 
   render() {
     if (this.state.emptyCart) return <EmptyCart />;
     // Carrinho recebe como props um array com a lista de produtos que deve renderizar
-    const arrayProducts = this.props.productsList;
+    const arrayProducts = this.state.productsList;
     return (
       <div>
         <h2>Carrinho de Compras</h2>

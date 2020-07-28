@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import * as api from '../services/api';
 import ProductCard from './ProductCard';
 
@@ -10,10 +12,12 @@ class ItemList extends React.Component {
       value: '',
       categoria: '',
       result: [],
+      cart: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClickCategory = this.handleClickCategory.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   async componentDidMount() {
@@ -26,7 +30,7 @@ class ItemList extends React.Component {
 
   async searchGetCategories() {
     this.setState(
-      { search: await api.getCategories() },
+      { search: await api.getCategories().then((categories) => categories) },
     );
   }
 
@@ -42,31 +46,46 @@ class ItemList extends React.Component {
     );
   }
 
+  addToCart(e) {
+    const id = e.target.value;
+    const result = this.state.result;
+    const product = result.find((prod) => prod.id === id);
+    this.setState({ cart: [...this.state.cart, product] });
+  }
+
   async handleSearch() {
     const resultado = await
-      api.getProductsFromCategoryAndQuery(this.state.categoria, this.state.value);
+      api.getProductsFromCategoryAndQuery(this.state.categoria, this.state.value)
+      .then((products) => products);
     this.setState(
       { result: resultado.results },
     );
   }
 
   render() {
-    const { search, result } = this.state;
+    const { search, result, cart } = this.state;
+    const cartPath = '/cart';
     return (
       <div>
         <input type="text" onChange={this.handleChange} />
         <button type="button" onClick={this.handleSearch}>Buscar</button>
+        <Link
+          data-testid="shopping-cart-button"
+          to={{ pathname: `${cartPath}`, query: { cart } }}
+        >
+          <img src="./icons/carrinho.png" alt="carrinho" />
+        </Link>
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
-        <ul>
+        <div>
           {search.map((category) => (
-            <li key={category.title}>{this.button(category.id, category.name)}</li>
+            <div key={category.title}>{this.button(category.id, category.name)}</div>
           ))
           }
-        </ul>
+        </div>
         <div>
-          {result.map((product) => <ProductCard product={product} />)}
+          {result.map((product) => <ProductCard product={product} function={this.addToCart} />)}
         </div>
       </div>
     );

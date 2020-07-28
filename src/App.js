@@ -1,11 +1,11 @@
 import { Switch, Route } from 'react-router';
 import React from 'react';
 import './App.css';
-// import ShoppingCart from './components/ShoppingCart';
 // import * as api from './services/api';
 import ItemList from './components/ItemList';
 // import { getCategories } from './services/api';
 import ProductDetails from './components/ProductDetails';
+import ShoppingCart from './components/ShoppingCart';
 
 function App() {
   return (
@@ -14,7 +14,8 @@ function App() {
         <Route exact path="/">
           <ItemList />
         </Route>
-        <Route path="/:id" render={(props) => <ProductDetails {...props} />} />
+        <Route exact path="/cart" render={(props) => <ShoppingCart {...props} />} />
+        <Route exact path="/:id" render={(props) => <ProductDetails {...props} />} />
       </Switch>
     </div>
   );
