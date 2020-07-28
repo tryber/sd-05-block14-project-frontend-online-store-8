@@ -27,6 +27,7 @@ class ItemList extends React.Component {
   button(id, name) {
     return (
       <button
+        data-testid="category"
         type="button"
         value={id}
         onClick={this.handleClickCategory}
@@ -48,10 +49,18 @@ class ItemList extends React.Component {
     );
   }
 
-  handleClickCategory(e) {
-    this.setState(
+  async handleClickCategory(e) {
+    await this.setState(
       { categoria: e.target.value },
     );
+    
+      api.getProductsFromCategoryAndQuery(this.state.categoria, this.state.value)
+      .then((products) => products)
+      .then((data) =>
+        this.setState(
+          { result: data.results },
+        ),
+      );
   }
 
   addToCart(e) {
@@ -88,7 +97,7 @@ class ItemList extends React.Component {
         </p>
         <div>
           {search.map((category) => (
-            <div data-testid="category" key={category.id}>
+            <div key={category.id}>
               {this.button(category.id, category.name, category.title)}
             </div>
           ))
