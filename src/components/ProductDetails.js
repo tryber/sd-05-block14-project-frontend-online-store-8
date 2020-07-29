@@ -22,7 +22,7 @@ class ProductDetails extends React.Component {
         </div>
         <Link
           data-testid="product-detail-add-to-cart"
-          to={{ pathname: `${cartPath}`, query: { cart: product } }}
+          to={{ pathname: `${cartPath}`, query: { cart: product.id } }}
         >
         Adicione ao carrinho
         </Link>

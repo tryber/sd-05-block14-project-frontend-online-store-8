@@ -14,19 +14,30 @@ class ShoppingCart extends React.Component {
 
   componentDidMount() {
     let productsList = [];
-    if (this.props.location.query) {
-      productsList = this.props.location.query.cart;
+    if (localStorage.saveItem) {
+      productsList = localStorage.saveItem.split(',');
     }
+    if (this.props.location.query) {
+      productsList.push(this.props.location.query.cart);
+      localStorage.setItem('saveItem', [productsList]);
+    }
+    productsList = productsList.filter((item) => item !== '');
     if (productsList.length > 0) {
-      this.changeState(productsList);
+      this.loadProducts(productsList);
+      this.changeState();
     }
   }
 
-  changeState(productsList) {
-    this.setState({
-      productsList,
-      emptyCart: false,
+  loadProducts(arrayId) {
+    arrayId.forEach((id) => {
+      fetch(`https://api.mercadolibre.com/items/${id}`)
+        .then((response) => response.json())
+        .then((data) => this.setState({ productsList: [...this.state.productsList, data] }));
     });
+  }
+
+  changeState() {
+    this.setState({ emptyCart: false });
   }
 
   render() {

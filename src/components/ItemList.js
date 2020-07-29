@@ -18,10 +18,16 @@ class ItemList extends React.Component {
     this.handleClickCategory = this.handleClickCategory.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.changeState = this.changeState.bind(this);
   }
 
   async componentDidMount() {
     this.searchGetCategories();
+    this.changeState();
+  }
+
+  changeState() {
+    this.setState({ cart: [localStorage.saveItem] })
   }
 
   button(id, name) {
@@ -64,16 +70,8 @@ class ItemList extends React.Component {
 
   async addToCart(e) {
     const id = e.target.value;
-    const result = this.state.result;
-    const product = result.find((prod) => prod.id === id);
-    await this.setState({ cart: [...this.state.cart, product] });
-    const storage = localStorage.saveItem;
-    console.log(storage[0].title);
-    if (storage) {
-      localStorage.setItem('saveItem', [...storage, product]);
-    } else {
-      localStorage.setItem('saveItem', [product]);
-    }
+    await this.setState({ cart: [...this.state.cart, id] });
+    localStorage.setItem('saveItem', [this.state.cart]);
   }
 
   async handleSearch() {
@@ -86,7 +84,7 @@ class ItemList extends React.Component {
   }
 
   render() {
-    const { search, result, cart } = this.state;
+    const { search, result } = this.state;
     const cartPath = '/cart';
     return (
       <div>
@@ -94,7 +92,7 @@ class ItemList extends React.Component {
         <button data-testid="query-button" type="button" onClick={this.handleSearch}>Buscar</button>
         <Link
           data-testid="shopping-cart-button"
-          to={{ pathname: `${cartPath}`, query: { cart } }}
+          to={{ pathname: `${cartPath}` }}
         >
           <img src="../icons/carrinho.png" alt="carrinho" />
         </Link>
