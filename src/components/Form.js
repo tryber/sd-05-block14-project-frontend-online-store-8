@@ -5,7 +5,7 @@ class Form extends React.Component {
     return (
       <div>
         <label htmlFor="form">Escreva uma avaliação sobre o produto:</label>
-        <textarea name="form" datatestid="product-detail-evaluation" />
+        <textarea name="form" data-testid="product-detail-evaluation" />
       </div>
     );
   }
