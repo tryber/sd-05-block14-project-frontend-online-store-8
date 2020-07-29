@@ -10,22 +10,32 @@ class ShoppingCart extends React.Component {
       emptyCart: true,
     };
     this.changeState = this.changeState.bind(this);
+    this.changeStateSimple = this.changeStateSimple.bind(this);
+    this.changeState = this.changeState.bind(this);
   }
 
   async componentDidMount() {
     let productsList = JSON.parse(localStorage.getItem('cart'));
     if (productsList) {
-      productsList = productsList.filter(item => item != null);
-      await this.setState({ productsList });
+      productsList = productsList.filter((item) => item != null);
+      await this.changeStateSimple(productsList);
     }
     if (this.props.location.query) {
       const product = this.props.location.query.cartItem;
-      await this.setState({ productsList: [...this.state.productsList, product] });
+      await this.changeStateSpread(product);
     }
     if (this.state.productsList && this.state.productsList.length > 0) {
       this.changeState();
     }
     localStorage.setItem('cart', JSON.stringify(this.state.productsList));
+  }
+
+  changeStateSpread(product) {
+    this.setState({ productsList: [...this.state.productsList, product] });
+  }
+
+  changeStateSimple(productsList) {
+    this.setState({ productsList });
   }
 
   changeState() {

@@ -23,10 +23,14 @@ class ItemList extends React.Component {
 
   componentDidMount() {
     if (localStorage.cart) {
-      this.setState({ cart: JSON.parse(localStorage.getItem('cart')) });
+      this.changeStateLocalStorage();
     }
     this.searchGetCategories();
     this.changeState();
+  }
+
+  changeStateLocalStorage() {
+    this.setState({ cart: JSON.parse(localStorage.getItem('cart')) });
   }
 
   changeState() {
@@ -75,8 +79,8 @@ class ItemList extends React.Component {
     const id = e.target.value;
     const result = this.state.result;
     const product = result.find((prod) => prod.id === id);
-    await this.setState({ cart: [...this.state.cart, product] });	
-    localStorage.setItem('cart', JSON.stringify(this.state.cart));	
+    await this.setState({ cart: [...this.state.cart, product] });
+    localStorage.setItem('cart', JSON.stringify(this.state.cart));
   }
 
   async handleSearch() {
