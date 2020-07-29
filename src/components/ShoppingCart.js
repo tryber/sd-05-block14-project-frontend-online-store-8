@@ -28,12 +28,14 @@ class ShoppingCart extends React.Component {
     }
   }
 
-  loadProducts(arrayId) {
-    arrayId.forEach((id) => {
-      fetch(`https://api.mercadolibre.com/items/${id}`)
+  async loadProducts(arrayId) {
+    let productsList = [];
+    for (let key in arrayId) {
+      await fetch(`https://api.mercadolibre.com/items/${arrayId[key]}`)
         .then((response) => response.json())
-        .then((data) => this.setState({ productsList: [...this.state.productsList, data] }));
-    });
+        .then(async (data) => productsList.push(data));
+    }
+    this.setState({ productsList })
   }
 
   changeState() {
@@ -43,13 +45,13 @@ class ShoppingCart extends React.Component {
   render() {
     if (this.state.emptyCart) return <EmptyCart />;
     // Carrinho recebe como props um array com a lista de produtos que deve renderizar
-    const arrayProducts = this.state.productsList;
+    const { productsList } = this.state;
     return (
       <div>
         <h2>Carrinho de Compras</h2>
         <div className="productsList">
           <ul>
-            {arrayProducts.map((product) => <ProductInfo product={product} />)}
+            {productsList.map((product) => <ProductInfo key={product.id} product={product} />)}
           </ul>
         </div>
       </div>
