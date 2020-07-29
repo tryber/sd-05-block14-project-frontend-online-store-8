@@ -7,6 +7,7 @@ import ItemList from './components/ItemList';
 // import { getCategories } from './services/api';
 import ProductDetails from './components/ProductDetails';
 import ShoppingCart from './components/ShoppingCart';
+import Checkout from './components/Checkout';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
             <ItemList />
           </Route>
           <Route exact path="/cart" render={(props) => <ShoppingCart {...props} />} />
-          <Route exact path="/:id" render={(props) => <ProductDetails {...props} />} />
+          <Route exact path="/product/:id" render={(props) => <ProductDetails {...props} />} />
+          <Route exact path="/checkout" render={(props) => <Checkout {...props} />} />
         </Switch>
       </Router>
     </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import Icon from '../icons/carrinho.png';
 import * as api from '../services/api';
 import ProductCard from './ProductCard';
 
@@ -73,7 +73,11 @@ class ItemList extends React.Component {
     const id = e.target.value;
     const result = this.state.result;
     const product = result.find((prod) => prod.id === id);
-    await this.setState({ cart: [...this.state.cart, product] });
+    if (this.state.cart) {
+      await this.setState({ cart: [...this.state.cart, product] });
+    } else {
+      await this.setState({ cart: [product] });
+    }
     localStorage.setItem('cart', JSON.stringify(this.state.cart));
   }
 
@@ -93,11 +97,8 @@ class ItemList extends React.Component {
       <div>
         <input data-testid="query-input" type="text" onChange={this.handleChange} />
         <button data-testid="query-button" type="button" onClick={this.handleSearch}>Buscar</button>
-        <Link
-          data-testid="shopping-cart-button"
-          to={{ pathname: `${cartPath}` }}
-        >
-          <img src="../icons/carrinho.png" alt="carrinho" />
+        <Link data-testid="shopping-cart-button" to={{ pathname: `${cartPath}`, query: { cart: this.state.cart } }} >
+          <img src={Icon} width="30px" alt="carrinho" />
         </Link>
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
