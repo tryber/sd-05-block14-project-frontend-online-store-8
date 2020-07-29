@@ -19,7 +19,7 @@ class ProductCard extends React.Component {
         </button>
         <Link
           data-testid="product-detail-link"
-          to={{ pathname: `/${product.id}`, query: { product } }}
+          to={{ pathname: `/product/${product.id}`, query: { product } }}
         >
           Ver detalhes
         </Link>

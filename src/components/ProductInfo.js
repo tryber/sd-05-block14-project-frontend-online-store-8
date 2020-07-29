@@ -11,7 +11,7 @@ class ProductInfo extends React.Component {
     const product = this.props.product;
     return (
       <li>
-        <span data-testid="shopping-cart-product-name">{product.title}</span>--
+        <p data-testid="shopping-cart-product-name">{product.title}</p>--
         <span>Preço:{product.price}</span>--
         <span data-testid="shopping-cart-product-quantity">
           {product.available_quantity}

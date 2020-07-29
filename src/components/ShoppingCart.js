@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ProductInfo from './ProductInfo';
 import EmptyCart from './EmptyCart';
 
@@ -43,7 +44,7 @@ class ShoppingCart extends React.Component {
   }
 
   render() {
-    if (this.state.emptyCart) return <EmptyCart />;
+    if (this.state.productsList.length === 0) return <EmptyCart />;
     // Carrinho recebe como props um array com a lista de produtos que deve renderizar
     const { productsList } = this.state;
     return (
@@ -54,6 +55,7 @@ class ShoppingCart extends React.Component {
             {productsList.map((product) => <ProductInfo key={product.id} product={product} />)}
           </ul>
         </div>
+        <Link to="/checkout" data-testid="checkout-products">Checkout</Link>
       </div>
     );
   }
