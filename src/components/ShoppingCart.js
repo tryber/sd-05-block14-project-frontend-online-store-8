@@ -29,13 +29,14 @@ class ShoppingCart extends React.Component {
   }
 
   async loadProducts(arrayId) {
-    let productsList = [];
-    for (let key in arrayId) {
-      await fetch(`https://api.mercadolibre.com/items/${arrayId[key]}`)
+    const productsList = [];
+    arrayId.forEach((id) => {
+      fetch(`https://api.mercadolibre.com/items/${id}`)
         .then((response) => response.json())
-        .then(async (data) => productsList.push(data));
-    }
-    this.setState({ productsList })
+        .then((data) => {
+          this.setState({ productsList: [...this.state.productsList, data] });
+        });
+    });
   }
 
   changeState() {
