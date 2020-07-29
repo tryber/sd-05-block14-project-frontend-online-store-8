@@ -21,7 +21,10 @@ class ItemList extends React.Component {
     this.changeState = this.changeState.bind(this);
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    if (localStorage.cart) {
+      this.setState({ cart: JSON.parse(localStorage.getItem('cart')) });
+    }
     this.searchGetCategories();
     this.changeState();
   }
@@ -70,8 +73,10 @@ class ItemList extends React.Component {
 
   async addToCart(e) {
     const id = e.target.value;
-    await this.setState({ cart: [...this.state.cart, id] });
-    localStorage.setItem('saveItem', [this.state.cart]);
+    const result = this.state.result;
+    const product = result.find((prod) => prod.id === id);
+    await this.setState({ cart: [...this.state.cart, product] });	
+    localStorage.setItem('cart', JSON.stringify(this.state.cart));	
   }
 
   async handleSearch() {
