@@ -18,23 +18,17 @@ class ItemList extends React.Component {
     this.handleClickCategory = this.handleClickCategory.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.addToCart = this.addToCart.bind(this);
-    this.changeState = this.changeState.bind(this);
   }
 
   componentDidMount() {
-    if (localStorage.cart) {
+    if (localStorage.cart != false) {
       this.changeStateLocalStorage();
     }
     this.searchGetCategories();
-    this.changeState();
   }
 
   changeStateLocalStorage() {
     this.setState({ cart: JSON.parse(localStorage.getItem('cart')) });
-  }
-
-  changeState() {
-    this.setState({ cart: [localStorage.saveItem] });
   }
 
   button(id, name) {
