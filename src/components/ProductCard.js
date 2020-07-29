@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FreeShipping from './FreeShipping';
 
 class ProductCard extends React.Component {
   render() {
@@ -9,6 +10,7 @@ class ProductCard extends React.Component {
         <span>{product.title}</span>
         <img src={product.thumbnail} alt={product.title} />
         <span>R$ {product.price}</span>
+        <FreeShipping free={product.shipping.free_shipping} />
         <button
           data-testid="product-add-to-cart"
           onClick={this.props.function} value={product.id}
