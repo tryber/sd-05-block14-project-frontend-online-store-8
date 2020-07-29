@@ -73,7 +73,7 @@ class ItemList extends React.Component {
     const id = e.target.value;
     const result = this.state.result;
     const product = result.find((prod) => prod.id === id);
-    if(this.state.cart) {
+    if (this.state.cart) {
       await this.setState({ cart: [...this.state.cart, product] });
     } else {
       await this.setState({ cart: [product] });
@@ -92,11 +92,12 @@ class ItemList extends React.Component {
 
   render() {
     const { search, result } = this.state;
+    const cartPath = '/cart';
     return (
       <div>
         <input data-testid="query-input" type="text" onChange={this.handleChange} />
         <button data-testid="query-button" type="button" onClick={this.handleSearch}>Buscar</button>
-        <Link data-testid="shopping-cart-button" to="/cart">
+        <Link data-testid="shopping-cart-button" to={{ pathname: `${cartPath}`, query: { cart: this.state.cart } }} >
           <img src={Icon} width="30px" alt="carrinho" />
         </Link>
         <p data-testid="home-initial-message">

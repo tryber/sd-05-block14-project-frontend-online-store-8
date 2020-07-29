@@ -6,29 +6,31 @@ import Form from './Form';
 class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
-    this.state= {
+    this.state = {
       product: [],
-    };
+    }
     this.changeState = this.changeState.bind(this);
   }
 
   componentDidMount() {
     const id = this.props.match.params.id;
     fetch(`https://api.mercadolibre.com/items/${id}`)
-    .then(response => response.json())
+    .then((response) => response.json())
     .then((data) => {
       this.changeState(data);
-    })
-  }
-
-  changeState(data) {
-    this.setState({
-      product: data,
     });
   }
 
+  changeState(data) {
+    this.setState(
+      {
+        product: data,
+      }
+    );
+  }
+
   render() {
-    const product =  this.state.product;
+    const product = this.state.product;
     const cartPath = '/cart';
     return (
       <div>
@@ -40,7 +42,7 @@ class ProductDetails extends React.Component {
         </div>
         <Link
           data-testid="product-detail-add-to-cart"
-          to={{ pathname: `${cartPath}`, query: { cartItem: product } }}
+          to={{ pathname: `${cartPath}`, query: { cart: [product] } }}
         >
         Adicione ao carrinho
         </Link>
