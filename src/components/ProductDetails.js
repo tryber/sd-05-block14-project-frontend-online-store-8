@@ -6,9 +6,7 @@ import Form from './Form';
 class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      product: [],
-    }
+    this.state = { product: [] };
     this.changeState = this.changeState.bind(this);
   }
 
@@ -22,11 +20,7 @@ class ProductDetails extends React.Component {
   }
 
   changeState(data) {
-    this.setState(
-      {
-        product: data,
-      }
-    );
+    this.setState({ product: data });
   }
 
   render() {

@@ -6,9 +6,7 @@ import EmptyCart from './EmptyCart';
 class ShoppingCart extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      productsList: this.props.location.query.cart,
-    };
+    this.state = { productsList: this.props.location.query.cart };
     this.changeStateSimple = this.changeStateSimple.bind(this);
     this.changeAnotherState = this.changeAnotherState.bind(this);
   }
@@ -52,7 +50,7 @@ class ShoppingCart extends React.Component {
         <h2>Carrinho de Compras</h2>
         <div className="productsList">
           <ul>
-            {productsList.map((product) => <ProductInfo key={product.id} product={product} />)} 
+            {productsList.map((product) => <ProductInfo key={product.id} product={product} />)}
           </ul>
         </div>
         <Link to="/checkout" data-testid="checkout-products">Checkout</Link>
