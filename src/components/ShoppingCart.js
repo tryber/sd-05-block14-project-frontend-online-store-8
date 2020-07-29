@@ -29,7 +29,6 @@ class ShoppingCart extends React.Component {
   }
 
   async loadProducts(arrayId) {
-    const productsList = [];
     arrayId.forEach((id) => {
       fetch(`https://api.mercadolibre.com/items/${id}`)
         .then((response) => response.json())
