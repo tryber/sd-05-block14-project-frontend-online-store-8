@@ -27,7 +27,7 @@ class ItemList extends React.Component {
   }
 
   changeState() {
-    this.setState({ cart: [localStorage.saveItem] })
+    this.setState({ cart: [localStorage.saveItem] });
   }
 
   button(id, name) {
