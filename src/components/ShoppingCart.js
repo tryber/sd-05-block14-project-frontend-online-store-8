@@ -11,18 +11,9 @@ class ShoppingCart extends React.Component {
     this.changeAnotherState = this.changeAnotherState.bind(this);
   }
 
-  // async componentDidMount() {
-  //   let productsList = JSON.parse(localStorage.getItem('cart'));
-  //   if (productsList) {
-  //     productsList = productsList.filter((item) => item != null);
-  //     await this.changeStateSimple(productsList);
-  //   }
-  //   if (this.props.location.query) {
-  //     const product = this.props.location.query.cartItem;
-  //     await this.changeStateSpread(product);
-  //   }
-  //   localStorage.setItem('cart', JSON.stringify(this.state.productsList));
-  // }
+  async componentDidMount() {
+    localStorage.setItem('cart', JSON.stringify(this.state.productsList));
+  }
 
   changeStateSpread(product) {
     this.setState({ productsList: [...this.state.productsList, product] });
@@ -47,7 +38,7 @@ class ShoppingCart extends React.Component {
     const { productsList } = this.state;
     return (
       <div>
-        <h2>Carrinho de Compras</h2>
+        <h2 data-testid="shopping-cart-button">Carrinho de Compras</h2>
         <ProductListMap productsList={productsList} />
         <Link to="/checkout" data-testid="checkout-products">Checkout</Link>
       </div>

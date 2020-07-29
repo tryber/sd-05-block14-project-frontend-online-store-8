@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Icon from '../icons/carrinho.png';
 // import * as productsAPI from '../services/api';
 import Form from './Form';
 
@@ -29,6 +30,9 @@ class ProductDetails extends React.Component {
     return (
       <div>
         <h2>Detalhes do produto</h2>
+        <Link data-testid="shopping-cart-button" to={{ pathname: `${cartPath}`, query: { cart: [this.state.product] } }} >
+          <img src={Icon} width="30px" alt="carrinho" />
+        </Link>
         <div>
           <div data-testid="product-detail-name">
             {product.title}
