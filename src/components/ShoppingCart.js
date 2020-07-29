@@ -15,6 +15,7 @@ class ShoppingCart extends React.Component {
     this.changeState = this.changeState.bind(this);
   }
 
+  
   async componentDidMount() {
     let productsList = JSON.parse(localStorage.getItem('cart'));
     if (productsList) {

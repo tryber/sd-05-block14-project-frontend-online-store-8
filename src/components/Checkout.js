@@ -3,10 +3,10 @@ import ProductInfo from './ProductInfo';
 import CreateInput from './CreateInput';
 
 class Checkout extends React.Component {
-  
-  render(){
-    let productsList = JSON.parse(localStorage.getItem('cart'));
-    return(
+
+  render() {
+    const productsList = JSON.parse(localStorage.getItem('cart'));
+    return (
       <div>
         <div className="productsList">
           <ul>
@@ -22,7 +22,7 @@ class Checkout extends React.Component {
           <CreateInput id="checkout-address" title="Endereço" />
         </form>
       </div>
-    )
+    );
   }
 }
 
