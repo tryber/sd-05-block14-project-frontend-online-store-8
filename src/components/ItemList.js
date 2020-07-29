@@ -20,8 +20,15 @@ class ItemList extends React.Component {
     this.addToCart = this.addToCart.bind(this);
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    if (localStorage.cart !== '') {
+      this.changeStateLocalStorage();
+    }
     this.searchGetCategories();
+  }
+
+  changeStateLocalStorage() {
+    this.setState({ cart: JSON.parse(localStorage.getItem('cart')) });
   }
 
   button(id, name) {
@@ -67,13 +74,7 @@ class ItemList extends React.Component {
     const result = this.state.result;
     const product = result.find((prod) => prod.id === id);
     await this.setState({ cart: [...this.state.cart, product] });
-    const storage = localStorage.saveItem;
-    console.log(storage[0].title);
-    if (storage) {
-      localStorage.setItem('saveItem', [...storage, product]);
-    } else {
-      localStorage.setItem('saveItem', [product]);
-    }
+    localStorage.setItem('cart', JSON.stringify(this.state.cart));
   }
 
   async handleSearch() {
@@ -86,7 +87,7 @@ class ItemList extends React.Component {
   }
 
   render() {
-    const { search, result, cart } = this.state;
+    const { search, result } = this.state;
     const cartPath = '/cart';
     return (
       <div>
@@ -94,7 +95,7 @@ class ItemList extends React.Component {
         <button data-testid="query-button" type="button" onClick={this.handleSearch}>Buscar</button>
         <Link
           data-testid="shopping-cart-button"
-          to={{ pathname: `${cartPath}`, query: { cart } }}
+          to={{ pathname: `${cartPath}` }}
         >
           <img src="../icons/carrinho.png" alt="carrinho" />
         </Link>

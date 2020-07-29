@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // import * as productsAPI from '../services/api';
+import Form from './Form';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -21,10 +22,11 @@ class ProductDetails extends React.Component {
         </div>
         <Link
           data-testid="product-detail-add-to-cart"
-          to={{ pathname: `${cartPath}`, query: { cart: product } }}
+          to={{ pathname: `${cartPath}`, query: { cartItem: product } }}
         >
         Adicione ao carrinho
         </Link>
+        <Form />
       </div>
     );
   }

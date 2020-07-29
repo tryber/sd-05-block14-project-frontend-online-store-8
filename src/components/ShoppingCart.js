@@ -10,35 +10,48 @@ class ShoppingCart extends React.Component {
       emptyCart: true,
     };
     this.changeState = this.changeState.bind(this);
+    this.changeStateSimple = this.changeStateSimple.bind(this);
+    this.changeState = this.changeState.bind(this);
   }
 
-  componentDidMount() {
-    let productsList = [];
+  async componentDidMount() {
+    let productsList = JSON.parse(localStorage.getItem('cart'));
+    if (productsList) {
+      productsList = productsList.filter((item) => item != null);
+      await this.changeStateSimple(productsList);
+    }
     if (this.props.location.query) {
-      productsList = this.props.location.query.cart;
+      const product = this.props.location.query.cartItem;
+      await this.changeStateSpread(product);
     }
-    if (productsList.length > 0) {
-      this.changeState(productsList);
+    if (this.state.productsList && this.state.productsList.length > 0) {
+      this.changeState();
     }
+    localStorage.setItem('cart', JSON.stringify(this.state.productsList));
   }
 
-  changeState(productsList) {
-    this.setState({
-      productsList,
-      emptyCart: false,
-    });
+  changeStateSpread(product) {
+    this.setState({ productsList: [...this.state.productsList, product] });
+  }
+
+  changeStateSimple(productsList) {
+    this.setState({ productsList });
+  }
+
+  changeState() {
+    this.setState({ emptyCart: false });
   }
 
   render() {
     if (this.state.emptyCart) return <EmptyCart />;
     // Carrinho recebe como props um array com a lista de produtos que deve renderizar
-    const arrayProducts = this.state.productsList;
+    const { productsList } = this.state;
     return (
       <div>
         <h2>Carrinho de Compras</h2>
         <div className="productsList">
           <ul>
-            {arrayProducts.map((product) => <ProductInfo product={product} />)}
+            {productsList.map((product) => <ProductInfo key={product.id} product={product} />)}
           </ul>
         </div>
       </div>
