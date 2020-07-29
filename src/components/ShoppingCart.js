@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ProductInfo from './ProductInfo';
 import EmptyCart from './EmptyCart';
+import ProductListMap from './ProductListMap';
 
 class ShoppingCart extends React.Component {
   constructor(props) {
@@ -48,11 +48,7 @@ class ShoppingCart extends React.Component {
     return (
       <div>
         <h2>Carrinho de Compras</h2>
-        <div className="productsList">
-          <ul>
-            {productsList.map((product) => <ProductInfo key={product.id} product={product} />)}
-          </ul>
-        </div>
+        <ProductListMap productsList={productsList} />
         <Link to="/checkout" data-testid="checkout-products">Checkout</Link>
       </div>
     );

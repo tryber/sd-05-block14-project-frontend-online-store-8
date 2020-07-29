@@ -1,6 +1,6 @@
 import React from 'react';
-import ProductInfo from './ProductInfo';
 import CreateInput from './CreateInput';
+import ProductListMap from './ProductListMap';
 
 class Checkout extends React.Component {
 
@@ -8,11 +8,7 @@ class Checkout extends React.Component {
     const productsList = JSON.parse(localStorage.getItem('cart'));
     return (
       <div>
-        <div className="productsList">
-          <ul>
-            {productsList.map((product) => <ProductInfo key={product.id} product={product} />)}
-          </ul>
-        </div>
+        <ProductListMap productsList={productsList} />
         <form action="">
           <CreateInput id="checkout-fullname" title="Nome Completo" />
           <CreateInput id="checkout-email" title="E-mail" />
