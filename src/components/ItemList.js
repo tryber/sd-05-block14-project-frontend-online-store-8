@@ -21,7 +21,7 @@ class ItemList extends React.Component {
   }
 
   componentDidMount() {
-    if (localStorage.cart != false) {
+    if (localStorage.cart !== '') {
       this.changeStateLocalStorage();
     }
     this.searchGetCategories();
